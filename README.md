@@ -1,3 +1,4 @@
-Please ensure you have checked out a branch corresponding to the network you are trying to join:
+Steps for joining the RC6 testnet:
 
-testnet-rc6
+1. Download the release binaries from https://microtick.com/releases/testnet/
+
