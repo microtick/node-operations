@@ -61,6 +61,7 @@ All validators should perform the following GENTX steps:
 GENTX-1. **VERY IMPORTANT** After Saturday, June 20, 2020 11:00 pm UTC, ensure sure you have the final genesis.json with all the starting account balances:
 
 ```
+$ git checkout testnet-rc6-2
 $ git pull
 ```
 
