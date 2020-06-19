@@ -101,11 +101,12 @@ GENTX-5. Email your gentx file (the output of the previous step indicated by the
 
 All validators should perform the following RUNTIME steps
 
-RUNTIME-1. After Sunday, June 21, 2020 11:00 pm UTC, update to the latest genesis.json that includes everyone's gentxs.
+RUNTIME-1. **VERY IMPORTANT** After Sunday, June 21, 2020 11:00 pm UTC, update to the latest genesis.json that includes everyone's gentxs.
 
 ```
 $ git pull
 $ cp genesis.json $HOME/.microtick/mtd/config
+$ mtd unsafe-reset-all
 ```
 
 RUNTIME-2. Edit $HOME/.microtick/mtd/config/config.toml. Change the persistent_peers line to:
