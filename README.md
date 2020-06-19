@@ -41,7 +41,7 @@ $ mtcli keys add validator
 
 ## Step 2 Genesis Account - COMPLETE BY Saturday, June 20, 2020 11:00 pm UTC
 
-Every validator should perform the following ACCOUNT steps:
+New validators should perform the following ACCOUNT steps:
 
 ACCOUNT-1. Find your validator address
 
