@@ -54,7 +54,7 @@ ACCOUNT-2. Send your address (the output from the previous command) as the subje
 
 All public genesis accounts will be awarded 20000 stake tokens (TICK)
 
-## Step 3 Genesis Transaction - COMPLETE BY Sunday, June 20, 2020 11:00 pm UTC
+## Step 3 Genesis Transaction - COMPLETE BY Sunday, June 21, 2020 11:00 pm UTC
 
 All validators should perform the following GENTX steps:
 
@@ -97,7 +97,7 @@ Genesis transaction written to "~/.microtick/mtd/config/gentx/gentx-xyz.json"
 
 GENTX-5. Email your gentx file (the output of the previous step indicated by the filename in quotes on the last line) as an attachment to mjackson@microtick.com
 
-## Step 4 - Running Node - COMPLETE PRIOR TO Monday, June 20, 2020 11:00 pm UTC
+## Step 4 - Running Node - COMPLETE PRIOR TO Monday, June 22, 2020 11:00 pm UTC
 
 Start your node and leave it online for genesis time. You do not need to be present or awake at genesis time, as long as your node is running.
 
