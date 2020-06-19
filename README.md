@@ -2,11 +2,11 @@
 
 ```mermaid
 graph TD;
-  New[New Validators] --> Step1[Initialization];
-  Step1 --> Step2[Create genesis account];
-  Existing[Existing Validators] --> Step3[Genesis transaction]
+  New[New Validators] --> Step1[Step 1. Initialization];
+  Step1 --> Step2[Step 2. Genesis account];
+  Existing[Existing Validators] --> Step3[Step 3. Genesis transaction]
   Step2 --> Step3;
-  Step3 --> Step4[Running node]
+  Step3 --> Step4[Step 4. Running node]
 ```
 
 ## Step 1 - Initialization
