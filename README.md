@@ -58,7 +58,7 @@ All public genesis accounts will be awarded 20000 stake tokens (TICK)
 
 All validators should perform the following GENTX steps:
 
-GENTX-1. **VERY IMPORTANT** After Saturday, June 20, 2020 11:00 pm UTC, ensure sure you have the final genesis.json with all the starting account balances:
+GENTX-1. **VERY IMPORTANT** After midnight UTC Saturday night, ensure sure you have the final genesis.json with all the starting account balances:
 
 ```
 $ git clone https://gitlab.com/microtick/validator.git
@@ -101,7 +101,7 @@ GENTX-5. Email your gentx file (the output of the previous step indicated by the
 
 All validators should perform the following RUNTIME steps
 
-RUNTIME-1. **VERY IMPORTANT** After Sunday, June 21, 2020 11:00 pm UTC, update to the latest genesis.json that includes everyone's gentxs.
+RUNTIME-1. **VERY IMPORTANT** After midnight UTC Sunday night, update to the latest genesis.json that includes everyone's gentxs.
 
 ```
 $ git pull
