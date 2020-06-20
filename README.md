@@ -106,7 +106,6 @@ RUNTIME-1. **VERY IMPORTANT** After midnight UTC Sunday night, update to the lat
 ```
 $ git pull
 $ cp genesis.json $HOME/.microtick/mtd/config
-$ mtd unsafe-reset-all
 ```
 
 RUNTIME-2. Edit $HOME/.microtick/mtd/config/config.toml. Change the persistent_peers line to:
@@ -118,6 +117,7 @@ persistent_peers = "922043cd83af759dd5a0605b32991667e8fd4977@45.79.207.112:26656
 RUNTIME-3. Start your node and leave it online for genesis time. You do not need to be present or awake at genesis time, as long as your node is running.
 
 ```
-mtd start
+$ mtd unsafe-reset-all
+$ mtd start
 ```
 
