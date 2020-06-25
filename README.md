@@ -3,10 +3,12 @@
 ```mermaid
 graph TD;
   New[New Validators] --> Step1[Step 1. Initialization];
-  Step1 --> Step2[Step 2. Genesis account];
+  Step1 -- before network start* --> Step2[Step 2. Genesis account];
   Existing[Existing Validators] --> Step3[Step 3. Genesis transaction]
   Step2 --> Step3;
   Step3 --> Step4[Step 4. Running node]
+  Step1 -- after network start** --> Step4
+  Step4 -- only validators that joined after network start** --> Step5[Create Validator]
 ```
 
 ## Step 1 - Initialization
@@ -79,7 +81,7 @@ GENTX-3. Remove any existing gentxs:
 $ rm -r $HOME/.microtick/mtd/config/gentx
 ```
 
-GENTX-4. Create your genesis tx (this assumes you have your validator key set up using mtcli)
+GENTX-4. Choose your parameters (https://hub.cosmos.network/master/validators/validator-faq.html) and create your genesis tx (this assumes you have your validator key set up using mtcli)
 
 ```
 $ mtd gentx --amount <self delegation amount> 
@@ -93,6 +95,14 @@ $ mtd gentx --amount <self delegation amount>
             --name <your validator key's name as shown by 'mtcli keys list'>
             
 Genesis transaction written to "~/.microtick/mtd/config/gentx/gentx-xyz.json"
+```
+
+Example values:
+```
+amount: 1000000utick (1 million uticks = 1 tick)
+commission rate: 0.1 (for 10% commission)
+commission max rate: 0.2 (for 20% commission)
+min self delegation: 1 (for 1 tick)
 ```
 
 GENTX-5. Email your gentx file (the output of the previous step indicated by the filename in quotes on the last line) as an attachment to mjackson@microtick.com
@@ -121,3 +131,35 @@ $ mtd unsafe-reset-all
 $ mtd start
 ```
 
+## Step 5 - Create Validator
+
+**Only validators that synced their runtime nodes (Step 4) after the network started need to do this step**
+
+CREATE-1. Wait until node is synced. Make sure 'jq' is installed (```apt-get install jq``` on debian / ubuntu). The following command should return 'false' when synced:
+
+```
+$ mtcli status | jq .sync_info.catching_up
+false
+```
+
+CREATE-2. Choose your parameters (https://hub.cosmos.network/master/validators/validator-faq.html) and create your validator:
+
+```
+$ mtcli tx staking create-validator --amount <self delegation amount>
+                                    --pubkey $(mtd tendermint show-validator)
+                                    --moniker <the name you'll call your validator> 
+                                    --commission-rate <rate>
+                                    --commission-max-rate <max rate> 
+                                    --commission-max-change-rate <max change rate> 
+                                    --min-self-delegation <min self delegation>
+                                    --from $(mtcli keys show validator -a)
+```
+
+Example values:
+```
+amount: 1000000utick (1 million uticks = 1 tick)
+commission rate: 0.1 (for 10% commission)
+commission max rate: 0.2 (for 20% commission)
+min self delegation: 1 (for 1 tick)
+name: "My Cool Validator" (do not use this for real, think up something better...)
+```
