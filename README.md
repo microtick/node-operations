@@ -142,7 +142,9 @@ $ mtcli status | jq .sync_info.catching_up
 false
 ```
 
-CREATE-2. Choose your parameters (https://hub.cosmos.network/master/validators/validator-faq.html) and create your validator:
+CREATE-2. Join the Microtick telegram channel and request 20,000 stake.
+
+CREATE-3. Choose your parameters (https://hub.cosmos.network/master/validators/validator-faq.html) and create your validator:
 
 ```
 $ mtcli tx staking create-validator --amount <self delegation amount>
