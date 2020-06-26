@@ -8,7 +8,7 @@ graph TD;
   Step2 --> Step3;
   Step3 --> Step4[Step 4. Running node]
   Step1 -- after network start** --> Step4
-  Step4 -- only validators that joined after network start** --> Step5[Create Validator]
+  Step4 -- only validators that joined after network start** --> Step5[Step 5. Create Validator]
 ```
 
 ## Step 1 - Initialization
