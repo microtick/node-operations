@@ -155,6 +155,8 @@ $ mtcli tx staking create-validator --amount <self delegation amount>
                                     --commission-max-change-rate <max change rate> 
                                     --min-self-delegation <min self delegation>
                                     --from $(mtcli keys show validator -a)
+                                    --gas auto
+                                    --chain-id <the current chain id>
 ```
 
 Example values:
