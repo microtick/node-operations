@@ -1,4 +1,4 @@
-# RC6-2 Testnet Instructions
+# RC7 Testnet Instructions
 
 ```mermaid
 graph TD;
@@ -20,11 +20,11 @@ SETUP-1. Download the release binaries from https://microtick.com/releases/testn
 SETUP-2. Extract the archive and verify MD5 checksums.
 
 ```
-$ tar xf microtick-rc6-linux-x86_64.tar.gz
+$ tar xf microtick-rc7-linux-x86_64.tar.gz
 $ md5sum mtcli
-1e7faf1e28d65be8041c3836074fee76  mtcli
+c3514952da82bb8782698a0f5d3a531c  mtcli
 $ md5sum mtd
-6b07e5e9714a9c132ccf7f87e0caa0fc  mtd
+0879b2c98319a03918c3b846077f0637  mtd
 ```
 
 SETUP-3. Ensure the binaries 'mtd' and 'mtcli' are in your PATH
@@ -41,22 +41,22 @@ SETUP-5. Create a validator key
 $ mtcli keys add validator
 ```
 
-## Step 2 Genesis Account - COMPLETE BY Saturday, June 20, 2020 11:00 pm UTC
+## Step 2 Genesis Account - COMPLETE BY Saturday, July 18, 2020 11:00 pm UTC
 
 New validators should perform the following ACCOUNT steps:
 
-ACCOUNT-1. Find your validator address
+ACCOUNT-1. Find your validator address:
 
 ```
 $ mtcli keys show validator -a
 micro17x67yaxc4vgxmpn6pqpczqh7l8942wvyhfqe6w
 ```
 
-ACCOUNT-2. Send your address (the output from the previous command) as the subject line to: mjackson@microtick.com
+ACCOUNT-2. Register for the Microtick mainnet by following the instructions here: https://microtick.com/mainnet-genesis.html
 
-All public genesis accounts will be awarded 20000 stake tokens (TICK)
+The first 20 public genesis accounts will be awarded 20000 stake tokens (TICK) 
 
-## Step 3 Genesis Transaction - COMPLETE BY Sunday, June 21, 2020 11:00 pm UTC
+## Step 3 Genesis Transaction - COMPLETE BY Sunday, July 19, 2020 11:00 pm UTC
 
 All validators should perform the following GENTX steps:
 
@@ -65,7 +65,7 @@ GENTX-1. **VERY IMPORTANT** After midnight UTC Saturday night, ensure sure you h
 ```
 $ git clone https://gitlab.com/microtick/validator.git
 $ cd validator
-$ git checkout testnet-rc6-2
+$ git checkout testnet-rc7
 $ git pull
 ```
 
