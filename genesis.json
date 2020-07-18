@@ -1,0 +1,503 @@
+{
+  "genesis_time": "2020-07-20T20:00:00Z",
+  "chain_id": "microtick-testnet-rc7",
+  "consensus_params": {
+    "block": {
+      "max_bytes": "22020096",
+      "max_gas": "-1",
+      "time_iota_ms": "1000"
+    },
+    "evidence": {
+      "max_age_num_blocks": "100000",
+      "max_age_duration": "172800000000000"
+    },
+    "validator": {
+      "pub_key_types": [
+        "ed25519"
+      ]
+    }
+  },
+  "app_hash": "",
+  "app_state": {
+    "params": null,
+    "bank": {
+      "send_enabled": true,
+      "balances": [
+        {
+          "address": "micro1pjtxlrflsyqtwyqkay3u5rz3flhchnedxkcjgj",
+          "coins": [
+            {
+              "denom": "utick",
+              "amount": "100000000000"
+            }
+          ]
+        },
+        {
+          "address": "micro1pcwrpym9jjwmxht00w6c9a5r3zsqaxz5mnqj8k",
+          "coins": [
+            {
+              "denom": "utick",
+              "amount": "20000000000"
+            }
+          ]
+        },
+        {
+          "address": "micro192pmvma3vfpw907j07wezdy06t2nc9ve8pr4rw",
+          "coins": [
+            {
+              "denom": "utick",
+              "amount": "20000000000"
+            }
+          ]
+        },
+        {
+          "address": "micro19kvkwm7ufhs7ekxct8nxvc2axzjrvl9kgyy6fj",
+          "coins": [
+            {
+              "denom": "utick",
+              "amount": "3333000000"
+            }
+          ]
+        },
+        {
+          "address": "micro19e7julkmhks770hyv9s9zfk8le2pwu8y2q0sdq",
+          "coins": [
+            {
+              "denom": "utick",
+              "amount": "3333000000"
+            }
+          ]
+        },
+        {
+          "address": "micro1gwhmkpezau7xtllezrupq8k279exuqtytx9ptd",
+          "coins": [
+            {
+              "denom": "utick",
+              "amount": "20000000000"
+            }
+          ]
+        },
+        {
+          "address": "micro1dyfdydkn843fclxd7clyxzvew5kfj4kxyg8umx",
+          "coins": [
+            {
+              "denom": "utick",
+              "amount": "20000000000"
+            }
+          ]
+        },
+        {
+          "address": "micro100e6qly69cy32pemlpm87j6k0qp4rakwegndnw",
+          "coins": [
+            {
+              "denom": "utick",
+              "amount": "20000000000"
+            }
+          ]
+        },
+        {
+          "address": "micro10mx05zr4nkptlkg2p9u07a2nlg55hta29zd45c",
+          "coins": [
+            {
+              "denom": "utick",
+              "amount": "3333000000"
+            }
+          ]
+        },
+        {
+          "address": "micro15dtmqj60mnflf7j9cm8dhfuqysjnnzz76u96k6",
+          "coins": [
+            {
+              "denom": "utick",
+              "amount": "3333000000"
+            }
+          ]
+        },
+        {
+          "address": "micro15k3f4846y8w4vzq9tjxv24cj7sqq6uwxg2j9hm",
+          "coins": [
+            {
+              "denom": "utick",
+              "amount": "20000000000"
+            }
+          ]
+        },
+        {
+          "address": "micro148wnknz40m0mxwu99j77f88akuezq3cq27a5fh",
+          "coins": [
+            {
+              "denom": "utick",
+              "amount": "100000000000"
+            }
+          ]
+        },
+        {
+          "address": "micro14g50yy9ahn7yqfk4d8cn40y8uplx4clhkkmg3p",
+          "coins": [
+            {
+              "denom": "utick",
+              "amount": "3333000000"
+            }
+          ]
+        },
+        {
+          "address": "micro140yj6y95p4zj3604rtcvjqjs0slvyu0cts2x2n",
+          "coins": [
+            {
+              "denom": "udai",
+              "amount": "250000000000"
+            }
+          ]
+        },
+        {
+          "address": "micro14ur4ls0naa9qawk0pv2x9943mksjl0m7kwx6kp",
+          "coins": [
+            {
+              "denom": "utick",
+              "amount": "20000000000"
+            }
+          ]
+        },
+        {
+          "address": "micro1cxzcu92mv92taejqqr66cxkh359swnzsjvfa4l",
+          "coins": [
+            {
+              "denom": "utick",
+              "amount": "20000000000"
+            }
+          ]
+        },
+        {
+          "address": "micro1etrnq0eh6vux6pswdjf0pwjxne77uxs4ramjv4",
+          "coins": [
+            {
+              "denom": "utick",
+              "amount": "20000000000"
+            }
+          ]
+        },
+        {
+          "address": "micro16xhyfktqd7h9a3hf0d5gw2uycarlunnzck5x3m",
+          "coins": [
+            {
+              "denom": "utick",
+              "amount": "20000000000"
+            }
+          ]
+        },
+        {
+          "address": "micro16jgzynt3catzf67l2xyek3fkxgjdqqm869sp8a",
+          "coins": [
+            {
+              "denom": "utick",
+              "amount": "3333000000"
+            }
+          ]
+        },
+        {
+          "address": "micro16cj080q8z32j8vjsrltmg5knysnckq8yzx439g",
+          "coins": [
+            {
+              "denom": "utick",
+              "amount": "20000000000"
+            }
+          ]
+        },
+        {
+          "address": "micro1md2qat4zy6uy0r7y5y9y84h8zvu5tymyzp5zm6",
+          "coins": [
+            {
+              "denom": "utick",
+              "amount": "20000000000"
+            }
+          ]
+        }
+      ],
+      "supply": []
+    },
+    "evidence": {
+      "evidence": []
+    },
+    "upgrade": {},
+    "slashing": {
+      "params": {
+        "signed_blocks_window": "10000",
+        "min_signed_per_window": "0.500000000000000000",
+        "downtime_jail_duration": "600000000000",
+        "slash_fraction_double_sign": "0.050000000000000000",
+        "slash_fraction_downtime": "0.010000000000000000"
+      },
+      "signing_infos": {},
+      "missed_blocks": {}
+    },
+    "capability": {
+      "index": "1",
+      "owners": []
+    },
+    "auth": {
+      "params": {
+        "max_memo_characters": "256",
+        "tx_sig_limit": "7",
+        "tx_size_cost_per_byte": "10",
+        "sig_verify_cost_ed25519": "590",
+        "sig_verify_cost_secp256k1": "1000"
+      },
+      "accounts": [
+        {
+          "type": "cosmos-sdk/Account",
+          "value": {
+            "address": "micro140yj6y95p4zj3604rtcvjqjs0slvyu0cts2x2n"
+          }
+        },
+        {
+          "type": "cosmos-sdk/Account",
+          "value": {
+            "address": "micro1pjtxlrflsyqtwyqkay3u5rz3flhchnedxkcjgj"
+          }
+        },
+        {
+          "type": "cosmos-sdk/Account",
+          "value": {
+            "address": "micro148wnknz40m0mxwu99j77f88akuezq3cq27a5fh"
+          }
+        },
+        {
+          "type": "cosmos-sdk/Account",
+          "value": {
+            "address": "micro1md2qat4zy6uy0r7y5y9y84h8zvu5tymyzp5zm6"
+          }
+        },
+        {
+          "type": "cosmos-sdk/Account",
+          "value": {
+            "address": "micro15k3f4846y8w4vzq9tjxv24cj7sqq6uwxg2j9hm"
+          }
+        },
+        {
+          "type": "cosmos-sdk/Account",
+          "value": {
+            "address": "micro1pcwrpym9jjwmxht00w6c9a5r3zsqaxz5mnqj8k"
+          }
+        },
+        {
+          "type": "cosmos-sdk/Account",
+          "value": {
+            "address": "micro1dyfdydkn843fclxd7clyxzvew5kfj4kxyg8umx"
+          }
+        },
+        {
+          "type": "cosmos-sdk/Account",
+          "value": {
+            "address": "micro100e6qly69cy32pemlpm87j6k0qp4rakwegndnw"
+          }
+        },
+        {
+          "type": "cosmos-sdk/Account",
+          "value": {
+            "address": "micro1etrnq0eh6vux6pswdjf0pwjxne77uxs4ramjv4"
+          }
+        },
+        {
+          "type": "cosmos-sdk/Account",
+          "value": {
+            "address": "micro16cj080q8z32j8vjsrltmg5knysnckq8yzx439g"
+          }
+        },
+        {
+          "type": "cosmos-sdk/Account",
+          "value": {
+            "address": "micro192pmvma3vfpw907j07wezdy06t2nc9ve8pr4rw"
+          }
+        },
+        {
+          "type": "cosmos-sdk/Account",
+          "value": {
+            "address": "micro16xhyfktqd7h9a3hf0d5gw2uycarlunnzck5x3m"
+          }
+        },
+        {
+          "type": "cosmos-sdk/Account",
+          "value": {
+            "address": "micro1gwhmkpezau7xtllezrupq8k279exuqtytx9ptd"
+          }
+        },
+        {
+          "type": "cosmos-sdk/Account",
+          "value": {
+            "address": "micro14ur4ls0naa9qawk0pv2x9943mksjl0m7kwx6kp"
+          }
+        },
+        {
+          "type": "cosmos-sdk/Account",
+          "value": {
+            "address": "micro1cxzcu92mv92taejqqr66cxkh359swnzsjvfa4l"
+          }
+        },
+        {
+          "type": "cosmos-sdk/Account",
+          "value": {
+            "address": "micro14g50yy9ahn7yqfk4d8cn40y8uplx4clhkkmg3p"
+          }
+        },
+        {
+          "type": "cosmos-sdk/Account",
+          "value": {
+            "address": "micro10mx05zr4nkptlkg2p9u07a2nlg55hta29zd45c"
+          }
+        },
+        {
+          "type": "cosmos-sdk/Account",
+          "value": {
+            "address": "micro16jgzynt3catzf67l2xyek3fkxgjdqqm869sp8a"
+          }
+        },
+        {
+          "type": "cosmos-sdk/Account",
+          "value": {
+            "address": "micro19e7julkmhks770hyv9s9zfk8le2pwu8y2q0sdq"
+          }
+        },
+        {
+          "type": "cosmos-sdk/Account",
+          "value": {
+            "address": "micro19kvkwm7ufhs7ekxct8nxvc2axzjrvl9kgyy6fj"
+          }
+        },
+        {
+          "type": "cosmos-sdk/Account",
+          "value": {
+            "address": "micro15dtmqj60mnflf7j9cm8dhfuqysjnnzz76u96k6"
+          }
+        }
+      ]
+    },
+    "gov": {
+      "starting_proposal_id": "1",
+      "deposits": null,
+      "votes": null,
+      "proposals": null,
+      "deposit_params": {
+        "min_deposit": [
+          {
+            "denom": "utick",
+            "amount": "10000000"
+          }
+        ],
+        "max_deposit_period": "172800000000000"
+      },
+      "voting_params": {
+        "voting_period": "172800000000000"
+      },
+      "tally_params": {
+        "quorum": "0.334000000000000000",
+        "threshold": "0.500000000000000000",
+        "veto": "0.334000000000000000"
+      }
+    },
+    "mint": {
+      "minter": {
+        "inflation": "0.130000000000000000",
+        "annual_provisions": "0.000000000000000000"
+      },
+      "params": {
+        "mint_denom": "utick",
+        "inflation_rate_change": "0.130000000000000000",
+        "inflation_max": "0.200000000000000000",
+        "inflation_min": "0.070000000000000000",
+        "goal_bonded": "0.670000000000000000",
+        "blocks_per_year": "6311520"
+      }
+    },
+    "distribution": {
+      "params": {
+        "community_tax": "0.020000000000000000",
+        "base_proposer_reward": "0.010000000000000000",
+        "bonus_proposer_reward": "0.040000000000000000",
+        "withdraw_addr_enabled": true
+      },
+      "fee_pool": {
+        "community_pool": []
+      },
+      "delegator_withdraw_infos": [],
+      "previous_proposer": "",
+      "outstanding_rewards": [],
+      "validator_accumulated_commissions": [],
+      "validator_historical_rewards": [],
+      "validator_current_rewards": [],
+      "delegator_starting_infos": [],
+      "validator_slash_events": []
+    },
+    "crisis": {
+      "constant_fee": {
+        "denom": "utick",
+        "amount": "1000"
+      }
+    },
+    "genutil": {
+      "gentxs": []
+    },
+    "microtick": {
+      "params": {
+        "european_options": true,
+        "commission_quote_percent": "0.000500000000000000",
+        "commission_trade_fixed": "0.025000000000000000",
+        "commission_update_percent": "0.000050000000000000",
+        "commission_settle_fixed": "0.010000000000000000",
+        "settle_incentive": "0.025000000000000000",
+        "freeze_time": 30,
+        "halt_time": "2030-01-01T00:00:00Z",
+        "mint_denom": "utick",
+        "mint_ratio": "0.500000000000000000"
+      },
+      "accounts": null,
+      "markets": [
+        {
+          "name": "XBTUSD",
+          "description": "Crypto - Bitcoin"
+        },
+        {
+          "name": "ETHUSD",
+          "description": "Crypto - Ethereum"
+        }
+      ],
+      "durations": [
+        {
+          "name": "5minute",
+          "seconds": 300
+        },
+        {
+          "name": "15minute",
+          "seconds": 900
+        },
+        {
+          "name": "1hour",
+          "seconds": 3600
+        },
+        {
+          "name": "4hour",
+          "seconds": 14400
+        },
+        {
+          "name": "12hour",
+          "seconds": 43200
+        }
+      ]
+    },
+    "staking": {
+      "params": {
+        "unbonding_time": "1814400000000000",
+        "max_validators": 100,
+        "max_entries": 7,
+        "historical_entries": 100,
+        "bond_denom": "utick"
+      },
+      "last_total_power": "0",
+      "last_validator_powers": null,
+      "validators": null,
+      "delegations": null,
+      "unbonding_delegations": null,
+      "redelegations": null,
+      "exported": false
+    }
+  }
+}
