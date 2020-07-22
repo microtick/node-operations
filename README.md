@@ -1,5 +1,7 @@
 # Microtick Mainnet Instructions
 
+Microtick is approaching its scheduled mainnet launch Wednesday, July 29, 2020 8:00 pm UTC. Follow these instructions to ensure your validator is prepared!
+
 ```mermaid
 graph TD;
   New[New Validators] --> Step1[Step 1. Initialization];
