@@ -13,7 +13,7 @@ graph TD;
 
 ## Step 1 - Initialization
 
-If you DO NOT yet have a running node, perform the following SETUP steps:
+Everyone should perform the following SETUP steps (binaries have been updated to v1.0.0)
 
 SETUP-1. Download the release binaries and .sig file for v1.0.0 from https://microtick.com/releases/mainnet/
 
