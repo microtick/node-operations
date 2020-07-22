@@ -15,18 +15,18 @@ graph TD;
 
 If you DO NOT yet have a running node, perform the following SETUP steps:
 
-SETUP-1. Download the release binaries and .sig file for RC7 from https://microtick.com/releases/testnet/
+SETUP-1. Download the release binaries and .sig file for v1.0.0 from https://microtick.com/releases/mainnet/
 
 SETUP-2. Extract the archive and verify MD5 checksums and signature:
 
 ```
-$ keybase verify -i microtick-rc7-linux-x86_64.tar.gz -d microtick-rc7-linux-x86_64.tar.gz.sig
+$ keybase verify -i microtick-v1.0.0-linux-x86_64.tar.gz -d microtick-v1.0.0-linux-x86_64.tar.gz.sig
 Signed by microtickzone
-$ tar xf microtick-rc7-linux-x86_64.tar.gz
+$ tar xf microtick-v1.0.0-linux-x86_64.tar.gz
 $ md5sum mtcli
-c3514952da82bb8782698a0f5d3a531c  mtcli
+c3d2d334ed0e4d6d3b966cb836876a38  mtcli
 $ md5sum mtd
-0879b2c98319a03918c3b846077f0637  mtd
+5edd2dbccfd67c5fac51a1e68cd5dfef  mtd
 ```
 
 SETUP-3. Ensure the binaries 'mtd' and 'mtcli' are in your PATH
@@ -36,9 +36,9 @@ $ mtcli version --long
 name: Microtick
 server_name: mtd
 client_name: mtcli
-version: rc7
+version: v1.0.0
 commit: 13c5059c68a7322fa6da41d6031ebc8d3f9f575b
-build_tags: build_host=manticore;build_date=Fri 17 Jul 2020 08:32:10 AM MDT
+build_tags: build_host=manticore;build_date=Wed 22 Jul 2020 07:10:17 AM MDT
 go: go version go1.14 linux/amd64
 ```
 
