@@ -131,7 +131,7 @@ GENTX-5. Create a pull request with your gentx in the "gentx" directory in this 
 
 ## Step 4 - MAINNET LAUNCH - COMPLETE PRIOR TO Wednesday, July 29, 2020 8:00 pm UTC
 
-All genesis validators should perform the following RUNTIME steps
+All validators should perform the following RUNTIME steps
 
 RUNTIME-1. **VERY IMPORTANT** After midnight UTC Tuesday night, update to the latest genesis.json that includes everyone's gentxs.
 
