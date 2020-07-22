@@ -1,4 +1,4 @@
-# RC7 Testnet Instructions
+# Microtick Mainnet Instructions
 
 ```mermaid
 graph TD;
