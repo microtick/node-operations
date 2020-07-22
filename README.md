@@ -20,13 +20,13 @@ SETUP-1. Download the release binaries and .sig file for RC7 from https://microt
 SETUP-2. Extract the archive and verify MD5 checksums and signature:
 
 ```
+$ keybase verify -i microtick-rc7-linux-x86_64.tar.gz -d microtick-rc7-linux-x86_64.tar.gz.sig
+Signed by microtickzone
 $ tar xf microtick-rc7-linux-x86_64.tar.gz
 $ md5sum mtcli
 c3514952da82bb8782698a0f5d3a531c  mtcli
 $ md5sum mtd
 0879b2c98319a03918c3b846077f0637  mtd
-$ keybase verify -i microtick-rc7-linux-x86_64.tar.gz -d microtick-rc7-linux-x86_64.tar.gz.sig
-Signed by microtickzone
 ```
 
 SETUP-3. Ensure the binaries 'mtd' and 'mtcli' are in your PATH
@@ -48,7 +48,7 @@ SETUP-4. Choose a moniker and initialize the working directory:
 $ mtd init <moniker>
 ```
 
-SETUP-5. Create a validator key
+SETUP-5. Create a validator key (if you do not already have one)
 
 ```
 $ mtcli keys add validator
@@ -60,11 +60,11 @@ Note: if you're using a Ledger HW wallet for your validator operator account, us
 $ mtcli keys add validator --ledger
 ```
 
-## Step 2 Genesis Account - COMPLETE BY Saturday, July 18, 2020 11:00 pm UTC
+## Step 2 Genesis Account - COMPLETE BY Friday, July 24, 2020 11:00 pm UTC
 
 New validators should perform the following ACCOUNT steps:
 
-ACCOUNT-1. Find your validator address:
+ACCOUNT-1. Find your validator address to receive genesis TICK tokens:
 
 ```
 $ mtcli keys show validator -a
@@ -73,18 +73,19 @@ micro17x67yaxc4vgxmpn6pqpczqh7l8942wvyhfqe6w
 
 ACCOUNT-2. Register for the Microtick mainnet by following the instructions here: https://microtick.com/mainnet-genesis.html
 
-The first 20 public genesis accounts will be awarded 20000 stake tokens (TICK).
+The first 20 public genesis accounts will be awarded 20000 stake tokens (TICK). After the first 20 slots are filled, validators
+will share a pool of 100000 tokens, with no single validator receiving more than 10000.
 
-## Step 3 Genesis Transaction - COMPLETE BY Sunday, July 19, 2020 11:00 pm UTC
+## Step 3 Genesis Transaction - COMPLETE BY Tuesday, July 28, 2020 11:00 pm UTC
 
 All validators should perform the following GENTX steps:
 
-GENTX-1. **VERY IMPORTANT** After midnight UTC Saturday night, ensure sure you have the final genesis.json with all the starting account balances:
+GENTX-1. **VERY IMPORTANT** After midnight UTC on Friday, July 24 and before Tuesday, July 28, 2020 11:00 pm UTC, ensure sure you have the final genesis.json with all the starting account balances:
 
 ```
 $ git clone https://gitlab.com/microtick/validator.git
 $ cd validator
-$ git checkout testnet-rc7
+$ git checkout mainnet
 $ git pull
 ```
 
@@ -124,15 +125,16 @@ commission max rate: 0.2 (for 20% commission)
 min self delegation: 1 (for 1 tick)
 ```
 
-GENTX-5. Email your gentx file (the output of the previous step indicated by the filename in quotes on the last line) as an attachment to mjackson@microtick.com
+GENTX-5. Create a pull request with your gentx in the "gentx" directory in this repository.
 
-## Step 4 - Running Node - COMPLETE PRIOR TO Monday, July 20, 2020 8:00 pm UTC
+## Step 4 - Running Node - COMPLETE PRIOR TO Wednesday, July 29, 2020 8:00 pm UTC
 
-All validators should perform the following RUNTIME steps
+All genesis validators should perform the following RUNTIME steps
 
-RUNTIME-1. **VERY IMPORTANT** After midnight UTC Sunday night, update to the latest genesis.json that includes everyone's gentxs.
+RUNTIME-1. **VERY IMPORTANT** After midnight UTC Tuesday night, update to the latest genesis.json that includes everyone's gentxs.
 
 ```
+$ git checkout mainnet
 $ git pull
 $ cp genesis.json $HOME/.microtick/mtd/config
 ```
@@ -152,7 +154,7 @@ $ mtd start
 
 ## Step 5 - Create Validator
 
-**Only validators that synced their runtime nodes (Step 4) after the network started need to do this step**
+**Only validators that are joining after the network start need to do this step**
 
 CREATE-1. Wait until node is synced. Make sure 'jq' is installed (```apt-get install jq``` on debian / ubuntu). The following command should return 'false' when synced:
 
@@ -163,7 +165,7 @@ false
 
 CREATE-2. Follow the instructions here to add your validator address: (https://microtick.com/mainnet-genesis.html)
 
-CREATE-3. Choose your parameters (https://hub.cosmos.network/master/validators/validator-faq.html) and create your validator:
+CREATE-3. After receiving tokens, choose your parameters (https://hub.cosmos.network/master/validators/validator-faq.html) and create your validator:
 
 ```
 $ mtcli tx staking create-validator --amount <self delegation amount>
