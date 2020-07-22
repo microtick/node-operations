@@ -127,7 +127,7 @@ min self delegation: 1 (for 1 tick)
 
 GENTX-5. Create a pull request with your gentx in the "gentx" directory in this repository.
 
-## Step 4 - Running Node - COMPLETE PRIOR TO Wednesday, July 29, 2020 8:00 pm UTC
+## Step 4 - MAINNET LAUNCH - COMPLETE PRIOR TO Wednesday, July 29, 2020 8:00 pm UTC
 
 All genesis validators should perform the following RUNTIME steps
 
