@@ -8,6 +8,8 @@ If your address is on this list: https://microtick.com/mainnet-genesis.html, the
 
 If the current time is before Wednesday, July 29, 2020 8:00 pm UTC, the network is in **Prelaunch**. Otherwise, it is **Postlaunch**.
 
+**Never delete your private keys (contained in $HOME/.microtick by default) unless you're sure of what you are doing**
+
 ```mermaid
 graph TD;
   Everyone[All Validators] --> Step1[Step 1. Install / Update Binaries]
