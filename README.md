@@ -2,18 +2,27 @@
 
 Microtick is approaching its scheduled mainnet launch Wednesday, July 29, 2020 8:00 pm UTC. Follow these instructions to ensure your validator is prepared!
 
+**Important**:
+
+If your address is on this list: https://microtick.com/mainnet-genesis.html, then you are an **Existing Validator**. If not, you are a **New Validator**.
+
+If the current time is before Wednesday, July 29, 2020 8:00 pm UTC, the network is in **Prelaunch**. Otherwise, it is **Postlaunch**.
+
 ```mermaid
 graph TD;
-  New[New Validators] --> Step1[Step 1. Initialization];
-  Step1 -- before network start* --> Step2[Step 2. Genesis account];
-  Existing[Existing Validators] --> Step3[Step 3. Genesis transaction]
-  Step2 --> Step3;
-  Step3 --> Step4[Step 4. Running node]
-  Step1 -- after network start** --> Step4
-  Step4 -- only validators that joined after network start** --> Step5[Step 5. Create Validator]
+  Everyone[All Validators] --> Step1[Step 1. Install / Update Binaries]
+  Step1 -- New Validators --> Step1.5[Step1.5. Initialization]
+  Step1 -- Existing Validators --> CheckNetwork((Launched?))
+  CheckNetwork -- Prelaunch --> Step3[Step 3. Genesis transaction]
+  CheckNetwork -- Postlaunch --> Step4[Step4. Running node]
+  Step1.5 -- Prelaunch --> Step2[Step 2. Genesis account]
+  Step2 --> Step3
+  Step3 --> Step4
+  Step1.5 -- Postlaunch --> Step4
+  Step4 -- only validators that skipped Step 3 --> Step5[Step 5. Create Validator]
 ```
 
-## Step 1 - Initialization
+## Step 1 - Install / Update Binaries
 
 Everyone should perform the following SETUP steps (binaries have been updated to v1.0.0)
 
@@ -43,6 +52,8 @@ commit: 13c5059c68a7322fa6da41d6031ebc8d3f9f575b
 build_tags: build_host=manticore;build_date=Wed 22 Jul 2020 07:10:17 AM MDT
 go: go version go1.14 linux/amd64
 ```
+
+## Step 1.5 Initialization
 
 SETUP-4. Choose a moniker and initialize the working directory:
 
@@ -80,7 +91,7 @@ will share a pool of 100000 tokens, with no single validator receiving more than
 
 ## Step 3 Genesis Transaction - COMPLETE BY Tuesday, July 28, 2020 11:00 pm UTC
 
-All validators should perform the following GENTX steps:
+All validators should perform the following GENTX steps (skip to Step 4 if network has Launched):
 
 GENTX-1. **VERY IMPORTANT** After midnight UTC on Friday, July 24 and before Tuesday, July 28, 2020 11:00 pm UTC, ensure sure you have the final genesis.json with all the starting account balances:
 
