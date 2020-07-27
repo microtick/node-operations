@@ -157,7 +157,7 @@ $ cp genesis.json $HOME/.microtick/mtd/config
 RUNTIME-2. Edit $HOME/.microtick/mtd/config/config.toml. Change the seeds line to:
 
 ```
-seeds = "922043cd83af759dd5a0605b32991667e8fd4977@45.79.207.112:26656,f9c90511c9fd061a6cb5111c86648603622384d0@microtick.spanish-node.es:6868"
+seeds = "922043cd83af759dd5a0605b32991667e8fd4977@45.79.207.112:26656,52333a93f5154422c62c2d654f2ca0f02129eaf2@microtick.spanish-node.es:6868"
 ```
 
 RUNTIME-3. Start your node and leave it online for genesis time. You should not need to be present or awake at genesis time, as long as your node is running. (but being online might be beneficial in case problems occur)
