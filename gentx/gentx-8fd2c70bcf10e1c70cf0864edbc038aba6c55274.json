@@ -1,0 +1,42 @@
+{
+  "type": "cosmos-sdk/StdTx",
+  "value": {
+    "msg": [
+      {
+        "type": "cosmos-sdk/MsgCreateValidator",
+        "value": {
+          "description": {
+            "moniker": "Figment Networks",
+            "identity": "E5F274B870BDA01D",
+            "website": "https://figment.network"
+          },
+          "commission": {
+            "rate": "0.100000000000000000",
+            "max_rate": "0.200000000000000000",
+            "max_change_rate": "0.050000000000000000"
+          },
+          "min_self_delegation": "1",
+          "delegator_address": "micro1qttzn70hqdz9kl4we0lf6u6udywcfuwgjvxu34",
+          "validator_address": "microvaloper1qttzn70hqdz9kl4we0lf6u6udywcfuwg3kq26j",
+          "pubkey": "microvalconspub1zcjduepqj9fv2zs404n37zp6e2gtxldfgje9feafkc8892dsfxn4zds0p3ns38q8ky",
+          "value": {
+            "denom": "utick",
+            "amount": "19900000000"
+          }
+        }
+      }
+    ],
+    "fee": {
+      "amount": [],
+      "gas": "200000"
+    },
+    "signatures": [
+      {
+        "pub_key": "61rphyECbC6ZBbMNq3yvbjKAGye8Nv2/Wtw7HbjnslWTaEsKquM=",
+        "signature": "ksAsrD7Jf4i+bpKapfitzxa2jhFyTnvkONqYAjtQ3TA4PRjXbGf4VvxlxbWfObov2Lz7h5rnnn2ueU2/R5k6KQ=="
+      }
+    ],
+    "memo": "8fd2c70bcf10e1c70cf0864edbc038aba6c55274@192.168.1.21:26656"
+  }
+}
+
