@@ -1,0 +1,35 @@
+{
+  "type": "cosmos-sdk/StdTx",
+  "value": {
+    "msg": [
+      {
+        "type": "cosmos-sdk/MsgCreateValidator",
+        "value": {
+          "description": {
+            "moniker": "Chancellor on Brink",
+            "website": "shapeshift.com",
+            "security_contact": "security@shapeshift.com"
+          },
+          "commission": {
+            "rate": "0.100000000000000000",
+            "max_rate": "0.200000000000000000",
+            "max_change_rate": "0.010000000000000000"
+          },
+          "min_self_delegation": "1",
+          "delegator_address": "micro148wnknz40m0mxwu99j77f88akuezq3cq27a5fh",
+          "validator_address": "microvaloper148wnknz40m0mxwu99j77f88akuezq3cqfymzzs",
+          "pubkey": "microvalconspub1zcjduepqvlmg9r667ys43fyxft963ccqjk29c3jkknlndwujxkzzy45zxdfs7mar4j",
+          "value": { "denom": "utick", "amount": "100000000000" }
+        }
+      }
+    ],
+    "fee": { "amount": [], "gas": "200000" },
+    "signatures": [
+      {
+        "pub_key": "61rphyECK5ArSscxK76t1/AtQcmMlLdaJUeHIA/hstnw+Xunx60=",
+        "signature": "KVAKIhmHGrAre78NzTcY05o4mDQ7Dla/t2NyvGZutUJ0SShxfJCxtvvZkCLcpwnLJfNih7UNFXPVCo2auVr9HA=="
+      }
+    ],
+    "memo": "2392d4d30779a61a3fc97811fec66422bd5667ea@172.31.36.137:26656"
+  }
+}
