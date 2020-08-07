@@ -203,3 +203,35 @@ commission max rate: 0.2 (for 20% commission)
 min self delegation: 1 (for 1 tick)
 name: "Choose a Name" (do not use this for real, think up something better...)
 ```
+
+### Optional - Run with systemd
+
+1. Create the following config at /etc/systemd/system/mtd.service. 
+You will need to edit the default username ubuntu to your machine username.
+Note that you may need to use sudo as it lives in a protected folder.
+
+```
+[Unit]
+Description=Microtick Node Daemon
+After=network-online.target
+
+[Service]
+User=ubuntu
+ExecStart=/usr/bin/mtd start
+Restart=always
+RestartSec=3
+LimitNOFILE=4096
+
+[Install]
+WantedBy=multi-user.target
+```
+
+2. Install the service and start the node.
+
+```
+sudo systemctl enable mtd
+sudo systemctl start mtd
+journalctl -u mtd.service -f
+```
+
+
