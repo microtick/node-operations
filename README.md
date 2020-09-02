@@ -234,4 +234,20 @@ sudo systemctl start mtd
 journalctl -u mtd.service -f
 ```
 
+### Configure persistent_peers
+
+In the file:
+
+```
+~/.microtick/mtd/config/config.toml
+```
+
+there is a setting named "persistent_peers".  These are nodes your node should attempt to stay connected to.  Several validators in the community have shared their node IDs and connection information. One or more of these may be added and should be comma separated in the config file:
+
+```
+254400ca1dae2db1149ef7d05a7ba85e83a35019@mt-0.microtick.chorus.one:31656,
+2a0be4c18deb4470b910836aec8b1c35a6ec18e0@18.134.11.88:26656,
+0778723e7a33df9be69301a1b7d10d4741639c7e@23.94.103.234:26656
+```
+
 
