@@ -1,12 +1,23 @@
 # Microtick chain migration instructions
 
-These are the steps to upgrade from `microtickzone-a1` to `microtickzone-a2`. The Microtick team
-will post the new genesis file as a reference, but we recommend that validator operators
-use these instructions to verify genesis file.
+We're planning an upgrade to the Microtick network to add a few new markets.
+
+This is a guide for validator operators to prepare to upgrade from `microtickzone-a1` 
+to `microtickzone-a2`. The Microtick team will post the new genesis file as a reference, 
+but we recommend that validator operators use these instructions to verify genesis file.
+
+## Key details
+- Block Height 3,343,200 (targeting Mar 18 at 15:00 utc, but there's variance in block times)
+- same software version
+- minor update to the genesis file
+- no parameter or account changes
+- clearing the state (less disk space)
+
+We haven't launched the governance proposal yet. When we do, **voting will only last for only 48 hours.**
 
 If the proposal `Microtick-a2 Upgrade Proposal` passes, the target time for the upgrade procedure is
-on `March 18, 2021 at or around 15:00 UTC`. Since block times vary, the precise block height will be `3,343,205`.
-Precisely, this means block 3,343,205 will be the last block signed for the microtickzone-a1 chain.
+on `March 18, 2021 at or around 15:00 UTC`. Since block times vary, the precise block height will be `3,343,200`.
+Precisely, this means block 3,343,200 will be the last block signed for the microtickzone-a1 chain.
 
   - [Preliminary](#preliminary)
   - [Risks](#risks)
@@ -46,7 +57,7 @@ It is critically important to back-up the `.mtd/data/priv_validator_state.json` 
 __Note__: It is assumed you are currently operating a full-node running v1.0.0 of the Microtick software.
 
 - The version/commit hash of Microtick v1.0.0: `13c5059c68a7322fa6da41d6031ebc8d3f9f575b`
-- The upgrade height as agreed upon by governance: **3,343,205**
+- The upgrade height as agreed upon by governance: **3,343,200**
 
 1. Verify you are currently running the correct version (v0.34.6+) of Microtick:
 
@@ -69,7 +80,7 @@ __Note__: It is assumed you are currently operating a full-node running v1.0.0 o
    Before exporting state via the following command, the `mtd` binary must be stopped:
 
    ```bash
-   $ mtd export --for-zero-height --height=3343205 > mt_genesis_export.json
+   $ mtd export --for-zero-height --height=3343200 > mt_genesis_export.json
    ```
 
 3. Verify the SHA256 of the (sorted) exported genesis file:
