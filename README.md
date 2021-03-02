@@ -1,8 +1,19 @@
 # Microtick chain migration instructions
 
-These are the steps to upgrade from `microtickzone-a1` to `microtickzone-a2`. The Microtick team
-will post the new genesis file as a reference, but we recommend that validator operators
-use these instructions to verify genesis file.
+We're planning an upgrade to the Microtick network to add a few new markets.
+
+This is a guide for validator operators to prepare to upgrade from `microtickzone-a1` 
+to `microtickzone-a2`. The Microtick team will post the new genesis file as a reference, 
+but we recommend that validator operators use these instructions to verify genesis file.
+
+## Key details
+- Block Height 3,343,200 (targeting Mar 18 at 15:00 utc, but there's variance in block times)
+- same software version
+- minor update to the genesis file
+- no parameter or account changes
+- clearing the state (less disk space)
+
+We haven't launched the governance proposal yet. When we do, **voting will only last for only 48 hours.**
 
 If the proposal `Microtick-a2 Upgrade Proposal` passes, the target time for the upgrade procedure is
 on `March 18, 2021 at or around 15:00 UTC`. Since block times vary, the precise block height will be `3,343,200`.
