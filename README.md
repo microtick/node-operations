@@ -1,253 +1,120 @@
-# Microtick Mainnet Instructions
+# Microtick chain migration instructions
 
-Microtick is approaching its scheduled mainnet launch Wednesday, July 29, 2020 8:00 pm UTC. Follow these instructions to ensure your validator is prepared!
+These are the steps to upgrade from `microtickzone-a1` to `microtickzone-a2`. The Microtick team
+will post the new genesis file as a reference, but we recommend that validator operators
+use these instructions to verify genesis file.
 
-**Important**:
+If the proposal `Microtick-a2 Upgrade Proposal` passes, the target time for the upgrade procedure is
+on `March 18, 2021 at or around 15:00 UTC`. Since block times vary, the precise block height will be `3,343,205`.
+Precisely, this means block 3,343,205 will be the last block signed for the microtickzone-a1 chain.
 
-If your address is on this list: https://microtick.com/mainnet-genesis.html, then you are an **Existing Validator**. If not, you are a **New Validator**.
+  - [Preliminary](#preliminary)
+  - [Risks](#risks)
+  - [Recovery](#recovery)
+  - [Upgrade Procedure](#upgrade-procedure)
+  - [Notes for Service Providers](#notes-for-service-providers)
 
-If the current time is before Wednesday, July 29, 2020 8:00 pm UTC, the network is in **Prelaunch**. Otherwise, it is **Postlaunch**.
+## Preliminary
 
-**Never delete your private keys (contained in $HOME/.microtick by default) unless you're sure of what you are doing**
+No changes have been made to the Microtick software. This upgrade is intended to reset the state of the chain,
+requiring less disk space and making it easier for a node to recover. We will also add some additional markets.
+This will not yet be the Stargate upgrade.
 
-```mermaid
-graph TD;
-  Everyone[All Validators] --> Step1[Step 1. Install / Update Binaries]
-  Step1 -- New Validators --> Step1.5[Step1.5. Initialization]
-  Step1 -- Existing Validators --> CheckNetwork((Launched?))
-  CheckNetwork -- Prelaunch --> Step3[Step 3. Genesis transaction]
-  CheckNetwork -- Postlaunch --> Step4[Step4. Running node]
-  Step1.5 -- Prelaunch --> Step2[Step 2. Genesis account]
-  Step2 --> Step3
-  Step3 --> Step4
-  Step1.5 -- Postlaunch --> Step4
-  Step4 -- only validators that skipped Step 3 --> Step5[Step 5. Create Validator]
-```
+## Risks
 
-## Step 1 - Install / Update Binaries
+As a validator performing the upgrade procedure on your consensus nodes carries a heightened risk of
+equivocation (aka double-signing) and with it, the slashing penalty of 5% of your staked TICK.
+The most important parts of this procedure are 1) verifying your software version and 
+2) verifying the genesis file hash before your validator begins signing blocks.
 
-Everyone should perform the following SETUP steps (binaries have been updated to v1.0.0)
+The riskiest thing that an operator can do is to discover a mistake and repeat the upgrade
+procedure again during the network startup. If you discover a mistake in your process, 
+wait for the network to start before correcting it. If the network is halted and you have
+started with a different genesis file than the expected one, get help from the Microtick team
+before resetting your validator.
 
-SETUP-1. Download the release binaries and .sig file for v1.0.0 from https://microtick.com/releases/mainnet/
+## Recovery
 
-SETUP-2. Extract the archive and verify MD5 checksums and signature:
+Prior to exporting the `microtickzone-a1` state, we advise operators to take a full data snapshot at the
+export height before proceeding. Snapshotting depends heavily on infrastructure, but generally this
+can be done by backing up the `.mtcli` and `.mtd` directories.
 
-```
-$ keybase verify -i microtick-v1.0.0-linux-x86_64.tar.gz -d microtick-v1.0.0-linux-x86_64.tar.gz.sig
-Signed by microtickzone
-$ tar xf microtick-v1.0.0-linux-x86_64.tar.gz
-$ md5sum mtcli
-c3d2d334ed0e4d6d3b966cb836876a38  mtcli
-$ md5sum mtd
-5edd2dbccfd67c5fac51a1e68cd5dfef  mtd
-```
+It is critically important to back-up the `.mtd/data/priv_validator_state.json` file after stopping your mtd process. This file is updated every block as your validator participates in a consensus rounds. This critical file is necessary to prevent double-signing, in case the upgrade fails and the previous chain needs to be restarted.
 
-SETUP-3. Ensure the binaries 'mtd' and 'mtcli' are in your PATH
+## Upgrade Procedure
 
-```
-$ mtcli version --long
-name: Microtick
-server_name: mtd
-client_name: mtcli
-version: v1.0.0
-commit: 13c5059c68a7322fa6da41d6031ebc8d3f9f575b
-build_tags: build_host=manticore;build_date=Wed 22 Jul 2020 07:10:17 AM MDT
-go: go version go1.14 linux/amd64
-```
+__Note__: It is assumed you are currently operating a full-node running v1.0.0 of the Microtick software.
 
-## Step 1.5 Initialization
+- The version/commit hash of Microtick v1.0.0: `13c5059c68a7322fa6da41d6031ebc8d3f9f575b`
+- The upgrade height as agreed upon by governance: **3,343,205**
 
-SETUP-4. Choose a moniker and initialize the working directory:
+1. Verify you are currently running the correct version (v0.34.6+) of Microtick:
 
-```
-$ mtd init <moniker>
-```
+   ```bash
+   $ mtd version --long
+   name: Microtick
+   server_name: mtd
+   client_name: mtcli
+   version: v1.0.0
+   commit: 13c5059c68a7322fa6da41d6031ebc8d3f9f575b
+   ```
 
-SETUP-5. Create a validator key (if you do not already have one)
+2. Export existing state from `microtickzone-a1`:
 
-```
-$ mtcli keys add validator
-```
+   **NOTE**: We recommend that validator operators take a full data snapshot at the export
+   height before proceeding in case the upgrade does not go as planned, or in case an insufficient
+   amount of voting power comes online within an agreed upon amount of time. If we need to relaunch
+   microtickzone-a1, the chain will fallback see [Recovery](#recovery) for how to proceed.
 
-Note: if you're using a Ledger HW wallet for your validator operator account, use the following command instead:
+   Before exporting state via the following command, the `mtd` binary must be stopped:
 
-```
-$ mtcli keys add validator --ledger
-```
+   ```bash
+   $ mtd export --for-zero-height --height=3343205 > mt_genesis_export.json
+   ```
 
-## Step 2 Genesis Account - COMPLETE BY Friday, July 24, 2020 11:00 pm UTC
+3. Verify the SHA256 of the (sorted) exported genesis file:
 
-New validators should perform the following ACCOUNT steps:
+   ```bash
+   $ jq -S -c -M '' mt_genesis_export.json | shasum -a 256
+   [PLACEHOLDER]  mt_genesis_export.json
+   ```
+   
+4. Verify you are still running the correct version (v1.0.0) of Microtick:
 
-ACCOUNT-1. Find your validator address to receive genesis TICK tokens:
+   ```bash
+   $ mtd version --long
+   name: Microtick
+   server_name: mtd
+   client_name: mtcli
+   version: v1.0.0
+   commit: 13c5059c68a7322fa6da41d6031ebc8d3f9f575b
+   ```
 
-```
-$ mtcli keys show validator -a
-micro17x67yaxc4vgxmpn6pqpczqh7l8942wvyhfqe6w
-```
+5. Migrate exported state:
 
-ACCOUNT-2. Register for the Microtick mainnet by following the instructions here: https://microtick.com/mainnet-genesis.html
+   ```bash
+   $ ./microtick-1-migration mt_genesis_export.json > new_genesis.json
+   ```
+   
+6. Verify the SHA256 of the final genesis JSON:
 
-The first 20 public genesis accounts will be awarded 20000 stake tokens (TICK). After the first 20 slots are filled, validators
-will share a pool of 100000 tokens, with no single validator receiving more than 10000.
+   ```bash
+   $ jq -S -c -M '' new_genesis.json | shasum -a 256
+   [PLACEHOLDER]  new_genesis.json
+   ```
 
-## Step 3 Genesis Transaction - COMPLETE BY Tuesday, July 28, 2020 11:00 pm UTC
+7. Copy the new genesis into place (if and only if the checksum you get matches the consensus)
 
-All validators should perform the following GENTX steps (skip to Step 4 if network has Launched):
+   ```bash
+   $ cp new_genesis.json $MTROOT/mtd/config/genesis.json
+   ```
 
-GENTX-1. **VERY IMPORTANT** After midnight UTC on Friday, July 24 and before Tuesday, July 28, 2020 11:00 pm UTC, ensure sure you have the final genesis.json with all the starting account balances:
+8. Reset state:
 
-```
-$ git clone https://gitlab.com/microtick/validator.git
-$ cd validator
-$ git checkout mainnet
-$ git pull
-```
-
-GENTX-2. Copy the final genesis.json file in this directory to $HOME/.microtick/mtd/config (backup the existing one if desired)
-
-```
-$ cp genesis.json $HOME/.microtick/mtd/config
-```
-
-GENTX-3. Remove any existing gentxs:
-
-```
-$ rm -r $HOME/.microtick/mtd/config/gentx
-```
-
-GENTX-4. Choose your parameters (https://hub.cosmos.network/master/validators/validator-faq.html) and create your genesis tx (this assumes you have your validator key set up using mtcli as described in Step 1)
-
-```
-$ mtd gentx --amount <self delegation amount> 
-            --commission-rate <your commission rate> 
-            --commission-max-rate <max rate>
-            --commission-max-change-rate <max change rate>
-            --min-self-delegation <self delegation parameter>
-            
-            ... include any other parameters such as website, details, identity, security contact, etc ...
-            
-            --name <your validator key's name as shown by 'mtcli keys list'>
-            
-Genesis transaction written to "~/.microtick/mtd/config/gentx/gentx-xyz.json"
-```
-
-Example values:
-```
-amount: 1000000utick (1 million uticks = 1 tick)
-commission rate: 0.1 (for 10% commission)
-commission max rate: 0.2 (for 20% commission)
-min self delegation: 1 (for 1 tick)
-```
-
-GENTX-5. Create a pull request with your gentx in the "gentx" directory in this repository.
-
-## Step 4 - MAINNET LAUNCH - COMPLETE PRIOR TO Wednesday, July 29, 2020 8:00 pm UTC
-
-All validators should perform the following RUNTIME steps
-
-RUNTIME-1. **VERY IMPORTANT** After midnight UTC Tuesday night, update to the latest genesis.json that includes everyone's gentxs.
-
-```
-$ git checkout mainnet
-$ git pull
-$ cp genesis.json $HOME/.microtick/mtd/config
-```
-
-RUNTIME-2. Edit $HOME/.microtick/mtd/config/config.toml. Change the seeds line to:
-
-```
-seeds = "922043cd83af759dd5a0605b32991667e8fd4977@45.79.207.112:26656,f9c90511c9fd061a6cb5111c86648603622384d0@microtick.spanish-node.es:6868"
-```
-
-RUNTIME-3. Start your node and leave it online for genesis time. You should not need to be present or awake at genesis time, as long as your node is running. (but being online might be beneficial in case problems occur)
-
-```
-$ mtd unsafe-reset-all
-$ mtd start
-```
-
-## Step 5 - Create Validator
-
-**Only validators that are joining after the network start need to do this step**
-
-CREATE-1. Wait until node is synced. Make sure 'jq' is installed (```apt-get install jq``` on debian / ubuntu). The following command should return 'false' when synced:
-
-```
-$ mtcli status | jq .sync_info.catching_up
-false
-```
-
-CREATE-2. Follow the instructions here to add your validator address: (https://microtick.com/mainnet-genesis.html)
-
-CREATE-3. After receiving tokens, choose your parameters (https://hub.cosmos.network/master/validators/validator-faq.html) and create your validator:
-
-```
-$ mtcli tx staking create-validator --amount <self delegation amount>
-                                    --pubkey $(mtd tendermint show-validator)
-                                    --moniker <the name you'll call your validator> 
-                                    --commission-rate <rate>
-                                    --commission-max-rate <max rate> 
-                                    --commission-max-change-rate <max change rate> 
-                                    --min-self-delegation <min self delegation>
-                                    --from $(mtcli keys show validator -a)
-                                    --gas auto
-                                    --chain-id <the current chain id>
-```
-
-Example values:
-```
-amount: 1000000utick (1 million uticks = 1 tick)
-commission rate: 0.1 (for 10% commission)
-commission max rate: 0.2 (for 20% commission)
-min self delegation: 1 (for 1 tick)
-name: "Choose a Name" (do not use this for real, think up something better...)
-```
-
-### Optional - Run with systemd
-
-1. Create the following config at /etc/systemd/system/mtd.service. 
-You will need to edit the default username ubuntu to your machine username.
-Note that you may need to use sudo as it lives in a protected folder.
-
-```
-[Unit]
-Description=Microtick Node Daemon
-After=network-online.target
-
-[Service]
-User=ubuntu
-ExecStart=/usr/bin/mtd start
-Restart=always
-RestartSec=3
-LimitNOFILE=4096
-
-[Install]
-WantedBy=multi-user.target
-```
-
-2. Install the service and start the node.
-
-```
-sudo systemctl enable mtd
-sudo systemctl start mtd
-journalctl -u mtd.service -f
-```
-
-### Configure persistent_peers
-
-In the file:
-
-```
-~/.microtick/mtd/config/config.toml
-```
-
-there is a setting named "persistent_peers".  These are nodes your node should attempt to stay connected to.  Several validators in the community have shared their node IDs and connection information. One or more of these may be added and should be comma separated in the config file:
-
-```
-254400ca1dae2db1149ef7d05a7ba85e83a35019@mt-0.microtick.chorus.one:31656,
-2a0be4c18deb4470b910836aec8b1c35a6ec18e0@18.134.11.88:26656,
-0778723e7a33df9be69301a1b7d10d4741639c7e@23.94.103.234:26656
-```
+   **NOTE**: Be sure you have a complete backed up state of your node before proceeding with this step.
+   See [Recovery](#recovery) for details on how to proceed.
 
+   ```bash
+   $ mtd unsafe-reset-all
+   ```
 
