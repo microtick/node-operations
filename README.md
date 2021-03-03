@@ -44,6 +44,20 @@ wait for the network to start before correcting it. If the network is halted and
 started with a different genesis file than the expected one, get help from the Microtick team
 before resetting your validator.
 
+## Impacts on Market Participants
+
+Some validators are also participating in price discovery, placing quotes and taking positions with trades.
+When state is exported, quotes and trades do not propagate to the new chain.  Instead, quotes are cancelled
+and the token backing in the quote is refunded to the quote's provider as part of the export. Trades are
+halted and the backing is refunded to the short counterparty. No trade settlement is performed based on any
+positions that might be in-the-money at the time of the upgrade, and the premium originally paid is not
+refunded (such funds may not be available since they are not escrowed as part of the trade contract).
+
+Because of this, it is fine to continue to place quotes and contribute to the consensus price by placing quotes
+of all time durations, right up to the time of the chain upgrade. However, trades placed with an expiration 
+after the expected upgrade time will have no profit potential in terms of settlement payout. (If the chain 
+upgrade is in 30 minutes, do not buy a 1-hour call!)
+
 ## Recovery
 
 Prior to exporting the `microtickzone-a1` state, we advise operators to take a full data snapshot at the
