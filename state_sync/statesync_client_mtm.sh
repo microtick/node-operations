@@ -58,5 +58,4 @@ s|^(seeds[[:space:]]+=[[:space:]]+).*$|\1\"${NODE1_ID}@${NODE1_IP}:${P2P_PORT1},
 sed -E -i 's/minimum-gas-prices = \".*\"/minimum-gas-prices = \"0.025stake\"/' $HOME/.microtick/config/app.toml
 
 ./mtm unsafe-reset-all
-#rm -f $HOME/./bcna/config/addrbook.json
 ./mtm start
