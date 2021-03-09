@@ -14,8 +14,8 @@ tar -xzvf mtm-v2-rc4-linux-x86_64.tar.gz
 mv mtm-v2-rc4 mtm
 chmod +x mtm
 ./mtm init New_peer --chain-id microtick-testnet-rc4
-wget https://microtick.com/releases/testnet/stargate/genesis.json 
-mv genesis.json $HOME/.microtick/config/
+wget https://microtick.com/releases/testnet/stargate/genesis-rc4.json 
+mv genesis-rc4.json $HOME/.microtick/config/genesis.json
 # At this moment: config state sync & launch the syncing (all previous config need to be performed) 
 
 DOMAIN_1=lunesfullnode.com
