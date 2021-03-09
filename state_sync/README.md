@@ -21,3 +21,6 @@ As a previous step before launch the script, edit it with `nano` tool and change
 `statesync_client_mtm.sh`
 
 
+## Credits 
+Joe Bowman won the bounty about State Sync implementation
+https://github.com/microtick/bounties/tree/main/statesync
