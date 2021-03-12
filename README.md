@@ -106,7 +106,8 @@ __Note__: It is assumed you are currently operating a full-node running v1.0.0 o
    [PLACEHOLDER]  mt_genesis_export.json
    ```
    
-4. Update your mtd and mtcli executables to v1.0.1 of Microtick and verify you are now running the latest:
+4. Update your mtd and mtcli executables to v1.0.1 of Microtick and place them in your path. Binary executables
+are available here: https://microtick.com/releases/mainnet. Verify you are now running the latest:
 
    ```bash
    $ mtd version --long
