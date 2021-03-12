@@ -1,13 +1,14 @@
 # Microtick chain migration instructions
 
-We're planning an upgrade to the Microtick network to add a few new markets.
+We're planning an upgrade to the Microtick network to add a few new markets and apply
+a security patch.
 
 This is a guide for validator operators to prepare to upgrade from `microtickzone-a1` 
 to `microtickzone-a2`. The Microtick team will post the new genesis file as a reference, 
 but we recommend that validator operators use these instructions to verify genesis file.
 
 ## Key details
-- Block Height 3,419,720 (targeting Mar 23 at 15:00 UTC)
+- Approximate block height: 3,419,800 (targeting Mar 23 at 15:00 UTC)
 - Software update to handle staking amounts for slashed delegations, and a security patch.
 - Update to the genesis file (new markets and revert an invalid Tx)
 - No other parameter or account changes
@@ -16,8 +17,8 @@ but we recommend that validator operators use these instructions to verify genes
 We haven't launched the governance proposal yet. When we do, **voting will only last for only 48 hours.**
 
 If the proposal `Microtick-a2 Upgrade Proposal` passes, the target time for the upgrade procedure is
-on `March 18, 2021 at or around 15:00 UTC`. Since block times vary, the precise block height will be `3,343,200`.
-Precisely, this means block 3,343,200 will be the last block signed for the microtickzone-a1 chain.
+on `March 23, 2021 at or around 15:00 UTC`. Since block times vary, the precise block height will be `3,419,800`.
+Precisely, this means block 3,419,800 will be the last block signed for the microtickzone-a1 chain.
 
   - [Preliminary](#preliminary)
   - [Risks](#risks)
@@ -72,9 +73,9 @@ It is critically important to back-up the `.mtd/data/priv_validator_state.json` 
 __Note__: It is assumed you are currently operating a full-node running v1.0.0 of the Microtick software.
 
 - The version/commit hash of Microtick v1.0.0: `13c5059c68a7322fa6da41d6031ebc8d3f9f575b`
-- The upgrade height as agreed upon by governance: **3,343,200**
+- The upgrade height as agreed upon by governance: **3,419,800**
 
-1. Verify you are currently running the correct version (v0.34.6+) of Microtick:
+1. Verify you are currently running the correct version (v1.0.0) of Microtick:
 
    ```bash
    $ mtd version --long
@@ -95,7 +96,7 @@ __Note__: It is assumed you are currently operating a full-node running v1.0.0 o
    Before exporting state via the following command, the `mtd` binary must be stopped:
 
    ```bash
-   $ mtd export --for-zero-height --height=3343200 > mt_genesis_export.json
+   $ mtd export --for-zero-height --height=3419800 > mt_genesis_export.json
    ```
 
 3. Verify the SHA256 of the (sorted) exported genesis file:
@@ -105,21 +106,21 @@ __Note__: It is assumed you are currently operating a full-node running v1.0.0 o
    [PLACEHOLDER]  mt_genesis_export.json
    ```
    
-4. Verify you are still running the correct version (v1.0.0) of Microtick:
+4. Update your mtd and mtcli executables to v1.0.1 of Microtick and verify you are now running the latest:
 
    ```bash
    $ mtd version --long
    name: Microtick
    server_name: mtd
    client_name: mtcli
-   version: v1.0.0
-   commit: 13c5059c68a7322fa6da41d6031ebc8d3f9f575b
+   version: v1.0.1
+   commit: 788fb769d1b2e02bde778c73ddcd42eb1e3904cc
    ```
 
 5. Migrate exported state:
 
    ```bash
-   $ ./microtick-1-migration mt_genesis_export.json > new_genesis.json
+   $ ./microtick-1-migration.sh mt_genesis_export.json > new_genesis.json
    ```
    
 6. Verify the SHA256 of the final genesis JSON:
@@ -129,7 +130,8 @@ __Note__: It is assumed you are currently operating a full-node running v1.0.0 o
    [PLACEHOLDER]  new_genesis.json
    ```
 
-7. Copy the new genesis into place (if and only if the checksum you get matches the consensus)
+7. Copy the new genesis into place (if and only if the checksum you get matches the consensus). Note your
+MTROOT by default is $HOME/.microtick and may be used in place of $MTROOT in the following command.
 
    ```bash
    $ cp new_genesis.json $MTROOT/mtd/config/genesis.json
