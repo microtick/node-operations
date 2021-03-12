@@ -7,11 +7,11 @@ to `microtickzone-a2`. The Microtick team will post the new genesis file as a re
 but we recommend that validator operators use these instructions to verify genesis file.
 
 ## Key details
-- Block Height 3,343,200 (targeting Mar 18 at 15:00 utc, but there's variance in block times)
-- same software version
-- minor update to the genesis file
-- no parameter or account changes
-- clearing the state (less disk space)
+- Block Height 3,419,720 (targeting Mar 23 at 15:00 UTC)
+- Software update to handle staking amounts for slashed delegations, and a security patch.
+- Update to the genesis file (new markets and revert an invalid Tx)
+- No other parameter or account changes
+- Clearing the state (less disk space)
 
 We haven't launched the governance proposal yet. When we do, **voting will only last for only 48 hours.**
 
@@ -27,7 +27,8 @@ Precisely, this means block 3,343,200 will be the last block signed for the micr
 
 ## Preliminary
 
-No changes have been made to the Microtick software. This upgrade is intended to reset the state of the chain,
+Minor changes have been made to the Microtick software to handle a security patch and state exports. 
+This upgrade is primarily intended to reset the state of the chain,
 requiring less disk space and making it easier for a node to recover. We will also add some additional markets.
 This will not yet be the Stargate upgrade.
 
