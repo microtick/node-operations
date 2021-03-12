@@ -4,7 +4,7 @@
 
 TRANSFORMS='.genesis_time="'2020-03-23T15:00:00Z'"'
 TRANSFORMS+='|.chain_id="'microtickzone-a2'"'
-TRANSFORMS+='|.app_state.microtick.markets+=[{name:"ATOMUSD",description:"Crypto - Atom"},{name:"GAS",description:"Commodity - Ethereum Gas Price"}]'
+TRANSFORMS+='|.app_state.microtick.markets+=[{name:"ATOMUSD",description:"Crypto - Atom"},{name:"ETHGAS",description:"Commodity - Ethereum Gas Price"}]'
 TRANSFORMS+='|.consensus_params.block.time_iota_ms="1000"'
 
 # Revert transaction B063A6A0D98201EC85D199A080FE94EFE3836C0FD5F6906280871D27FC592B40
