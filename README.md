@@ -33,6 +33,12 @@ This upgrade is primarily intended to reset the state of the chain,
 requiring less disk space and making it easier for a node to recover. We will also add some additional markets.
 This will not yet be the Stargate upgrade.
 
+Ensure you have the 'jq' tool installed on your system:
+
+```
+$ sudo apt-get install jq
+```
+
 ## Risks
 
 As a validator performing the upgrade procedure on your consensus nodes carries a heightened risk of
