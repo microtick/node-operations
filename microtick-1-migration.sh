@@ -2,8 +2,8 @@
 
 # Note: this upgrade script requires 'jq' to be installed
 
-TRANSFORMS='.genesis_time="'2020-03-23T15:00:00Z'"'
-TRANSFORMS+='|.chain_id="'microtickzone-a2'"'
+TRANSFORMS='.genesis_time="2020-03-23T15:00:00Z"'
+TRANSFORMS+='|.chain_id="microtickzone-a2"'
 TRANSFORMS+='|.app_state.microtick.markets+=[{name:"ATOMUSD",description:"Crypto - Atom"},{name:"ETHGAS",description:"Commodity - Ethereum Gas Price"}]'
 TRANSFORMS+='|.consensus_params.block.time_iota_ms="1000"'
 
