@@ -155,10 +155,11 @@ MTROOT by default is $HOME/.microtick and may be used in place of $MTROOT in the
 
 9. Start the node per your normal method. It will not produce blocks until enough validators come online.
 
-Messages like the following are normal on startup:
+    Messages like the following are normal on startup:
 
-```
-adjusted final stake for delegator: micro1wtjwpy79c4qet6ucv5y5sgmr55s7m8423r87uf validator: microvaloper1ktznmxdjuf4jy3u4vnwx5n7mgg4exlklhufp66 amount: 499500000.000000000000000000
-```
+    ```
+    adjusted final stake for delegator: micro1wtjwpy79c4qet6ucv5y5sgmr55s7m8423r87uf validator: microvaloper1ktznmxdjuf4jy3u4vnwx5n7mgg4exlklhufp66 amount: 499500000.000000000000000000
+    ```
 
-This is due to the fact that the version of SDK that Microtick version 1.0.0 used did not correct the stake in the state export for slashed amounts.
+    This is due to the fact that the version of SDK that Microtick version 1.0.0 used did not correct the stake in the state export for slashed amounts.
+    The adjustments are for TICK lost due to a validator that was slashed for downtime or double signing.
