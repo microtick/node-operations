@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Note: this upgrade script requires 'jq' to be installed
 
