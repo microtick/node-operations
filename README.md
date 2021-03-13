@@ -8,17 +8,17 @@ to `microtickzone-a2`. The Microtick team will post the new genesis file as a re
 but we recommend that validator operators use these instructions to verify genesis file.
 
 ## Key details
-- Approximate block height: 3,419,800 (targeting Mar 23 at 15:00 UTC)
-- Software update to handle staking amounts for slashed delegations, and a security patch.
-- Update to the genesis file (new markets and revert an invalid Tx)
-- No other parameter or account changes
+- Precise block height: 3,416,000 (targeting Mar 23 at 15:00 UTC, but will vary with block time variances)
+- Software update to handle staking amounts for slashed delegations, and a security patch
+- Update to the genesis file (new markets and revert one invalid transaction)
+- No parameter or account changes
 - Clearing the state (less disk space)
 
 We haven't launched the governance proposal yet. When we do, **voting will only last for only 48 hours.**
 
 If the proposal `Microtick-a2 Upgrade Proposal` passes, the target time for the upgrade procedure is
-on `March 23, 2021 at or around 15:00 UTC`. Since block times vary, the precise block height will be `3,419,800`.
-Precisely, this means block 3,419,800 will be the last block signed for the microtickzone-a1 chain.
+on `March 23, 2021 at or around 15:00 UTC`. Since block times vary, the precise block height will be `3,416,000`.
+Precisely, this means block 3,416,000 will be the last block signed for the microtickzone-a1 chain.
 
   - [Preliminary](#preliminary)
   - [Risks](#risks)
@@ -73,7 +73,7 @@ It is critically important to back-up the `.mtd/data/priv_validator_state.json` 
 __Note__: It is assumed you are currently operating a full-node running v1.0.0 of the Microtick software.
 
 - The version/commit hash of Microtick v1.0.0: `13c5059c68a7322fa6da41d6031ebc8d3f9f575b`
-- The upgrade height as agreed upon by governance: **3,419,800**
+- The upgrade height as agreed upon by governance: **3,416,000**
 
 1. Verify you are currently running the correct version (v1.0.0) of Microtick:
 
@@ -96,7 +96,7 @@ __Note__: It is assumed you are currently operating a full-node running v1.0.0 o
    Before exporting state via the following command, the `mtd` binary must be stopped:
 
    ```bash
-   $ mtd export --for-zero-height --height=3419800 > mt_genesis_export.json
+   $ mtd export --for-zero-height --height=3416000 > mt_genesis_export.json
    ```
 
 3. Verify the SHA256 of the (sorted) exported genesis file:
