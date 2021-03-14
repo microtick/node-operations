@@ -12,7 +12,7 @@ TRANSFORMS+='{name:"DOTUSD",description:"Crypto - Polkadot"},'
 TRANSFORMS+='{name:"ADAUSD",description:"Crypto - Cardano"},'
 TRANSFORMS+='{name:"XTZUSD",description:"Crypto - Tezos"},'
 TRANSFORMS+='{name:"LINKUSD",description:"Crypto - Chainlink"},'
-TRANSFORMS+='{name:"ETHGAS",description:"Commodity - Ethereum Gas Price"},'
+TRANSFORMS+='{name:"ETHGAS",description:"Commodity - Ethereum Gas Price"}'
 TRANSFORMS+=']'
 TRANSFORMS+='|.consensus_params.block.time_iota_ms="1000"'
 
