@@ -2,7 +2,7 @@
 
 # Note: this upgrade script requires 'jq' to be installed
 
-TRANSFORMS='.genesis_time="2020-03-23T15:00:00Z"'
+TRANSFORMS='.genesis_time="2021-03-25T15:00:00Z"'
 TRANSFORMS+='|.chain_id="microtickzone-a2"'
 TRANSFORMS+='|.app_state.microtick.markets+=['
 TRANSFORMS+='{name:"ATOMUSD",description:"Crypto - Atom"},'
@@ -27,4 +27,4 @@ TXDENOM=udai
 TRANSFORMS+='|.app_state.bank.balances[]|=(select(.address=="'$TXRECIPIENT'").coins[]|=(select(.denom=="'$TXDENOM'").amount|=(tonumber-'$TXAMT'|tostring)))'
 TRANSFORMS+='|.app_state.bank.balances[]|=(select(.address=="'$TXSENDER'").coins[]|=(select(.denom=="'$TXDENOM'").amount|=(tonumber+'$TXAMT'|tostring)))'
 
-jq "$TRANSFORMS" $1 
+jq -S -c -M "$TRANSFORMS" $1 
