@@ -1,11 +1,17 @@
 # Microtick chain migration instructions
 
-We're planning an upgrade to the Microtick network to add a few new markets and apply
+<s>We're planning an upgrade to the Microtick network to add a few new markets and apply
 a security patch.
 
 This is a guide for validator operators to prepare to upgrade from `microtickzone-a1` 
 to `microtickzone-a2`. The Microtick team will post the new genesis file as a reference, 
-but we recommend that validator operators use these instructions to verify genesis file.
+but we recommend that validator operators use these instructions to verify genesis file.</s>
+
+On March 23 15:00 UTC the Microtick community initiated a chain hard fork per governance proposal 4. The
+full chain migration was not completed due to some JSON canonicalization issues with the state export.
+
+This is a guide to the second half of the migration, including the state export, verification and restart
+of nodes for `microtickzone-a2`.
 
 ## Key details
 - Precise block height: 3,416,000 (targeting Mar 23 at 15:00 UTC, but will vary with block time variances)
@@ -14,11 +20,11 @@ but we recommend that validator operators use these instructions to verify genes
 - No parameter or account changes
 - Clearing the state (less disk space)
 
-We haven't launched the governance proposal yet. When we do, **voting will only last for only 48 hours.**
+<s>We haven't launched the governance proposal yet. When we do, **voting will only last for only 48 hours.**
 
 If the proposal `Microtick-a2 Upgrade Proposal` passes, the target time for the upgrade procedure is
 on `March 23, 2021 at or around 15:00 UTC`. Since block times vary, the precise block height will be `3,416,000`.
-Precisely, this means block 3,416,000 will be the last block signed for the microtickzone-a1 chain.
+Precisely, this means block 3,416,000 will be the last block signed for the microtickzone-a1 chain.</s>
 
   - [Preliminary](#preliminary)
   - [Risks](#risks)
@@ -33,10 +39,10 @@ This upgrade is primarily intended to reset the state of the chain,
 requiring less disk space and making it easier for a node to recover. We will also add some additional markets.
 This will not yet be the Stargate upgrade.
 
-Ensure you have the 'jq' tool installed on your system:
+Ensure you have the 'jq' tool and Python3 installed on your system:
 
 ```
-$ sudo apt-get install jq
+$ sudo apt-get install jq python3
 ```
 
 ## Risks
@@ -81,15 +87,17 @@ __Note__: It is assumed you are currently operating a full-node running v1.0.0 o
 - The version/commit hash of Microtick v1.0.0: `13c5059c68a7322fa6da41d6031ebc8d3f9f575b`
 - The upgrade height as agreed upon by governance: **3,416,000**
 
-1. Verify you are currently running the correct version (v1.0.0) of Microtick:
+   
+1. Update your mtd and mtcli executables to v1.0.2 of Microtick and place them in your path. Binary executables
+are available here: https://microtick.com/releases/mainnet. Verify you are now running the latest:
 
    ```bash
    $ mtd version --long
    name: Microtick
    server_name: mtd
    client_name: mtcli
-   version: v1.0.0
-   commit: 13c5059c68a7322fa6da41d6031ebc8d3f9f575b
+   version: v1.0.2
+   commit: 20e2645db16ecb1b5cab03570fdf3a445e81fd69
    ```
 
 2. Export existing state from `microtickzone-a1`:
@@ -108,43 +116,31 @@ __Note__: It is assumed you are currently operating a full-node running v1.0.0 o
 3. Verify the SHA256 of the (sorted) exported genesis file:
 
    ```bash
-   $ jq -S -c -M '' mt_genesis_export.json | shasum -a 256
-   [PLACEHOLDER]  mt_genesis_export.json
-   ```
-   
-4. Update your mtd and mtcli executables to v1.0.1 of Microtick and place them in your path. Binary executables
-are available here: https://microtick.com/releases/mainnet. Verify you are now running the latest:
-
-   ```bash
-   $ mtd version --long
-   name: Microtick
-   server_name: mtd
-   client_name: mtcli
-   version: v1.0.1
-   commit: 788fb769d1b2e02bde778c73ddcd42eb1e3904cc
+   $ ./canonical_json.py mt_genesis_export.json | shasum -a 256
+   6e87ce2d90d374815b757345f063bc32f303adc27873addd490e87a1e2da7c50  -
    ```
 
-5. Migrate exported state:
+4. Migrate exported state:
 
    ```bash
    $ ./microtick-1-migration.sh mt_genesis_export.json > new_genesis.json
    ```
    
-6. Verify the SHA256 of the final genesis JSON:
+5. Verify the SHA256 of the final genesis JSON:
 
    ```bash
-   $ jq -S -c -M '' new_genesis.json | shasum -a 256
-   [PLACEHOLDER]  new_genesis.json
+   $ ./canonical_json.py new_genesis.json | shasum -a 256                                                      
+   6dd8f7072eee2f0c8273c8968472d386fbb90bb242ecd621a8dcc48c112b7b92  -
    ```
 
-7. Copy the new genesis into place (if and only if the checksum you get matches the consensus). Note your
+6. Copy the new genesis into place (if and only if the checksum you get matches the consensus). Note your
 MTROOT by default is $HOME/.microtick and may be used in place of $MTROOT in the following command.
 
    ```bash
    $ cp new_genesis.json $MTROOT/mtd/config/genesis.json
    ```
 
-8. Reset state:
+7. Reset state:
 
    **NOTE**: Be sure you have a complete backed up state of your node before proceeding with this step.
    See [Recovery](#recovery) for details on how to proceed.
@@ -153,7 +149,7 @@ MTROOT by default is $HOME/.microtick and may be used in place of $MTROOT in the
    $ mtd unsafe-reset-all
    ```
 
-9. Start the node per your normal method. It will not produce blocks until enough validators come online.
+8. Start the node per your normal method. It will not produce blocks until enough validators come online.
 
     Messages like the following are normal on startup:
 
